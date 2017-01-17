@@ -19,11 +19,11 @@ class BankAccount
 	end
 	
 	def savingsAccountBalance
-		puts "Your Savings Account balance is: #{@savings_balance}"
+		return "Your Savings Account balance is: #{@savings_balance}"
 	end
 	
 	def checkingAccountBalance
-		puts "Your Checking Account balance is: #{@checking_balance}"
+		return "Your Checking Account balance is: #{@checking_balance}"
 	end
 
 	def deposit(amount, account)
@@ -41,13 +41,13 @@ class BankAccount
 			if amount < @savings_balance
 				@savings_balance -= amount
 			else
-				puts "Sorry, your Savings Account balance is insufficient"
+				"Sorry, your Savings Account balance is insufficient"
 			end
 		else
 			if amount < @checking_balance
 				@checking_balance -= amount
 			else
-				puts "Sorry, your Savings Account balance is insufficient"
+				"Sorry, your Checking Account balance is insufficient"
 			end
 		end
 	end
@@ -55,7 +55,7 @@ class BankAccount
 	def displayTotalBalance
 		puts "Your Checking Account balance is: #{@checking_balance + (@checking_balance * @interest_rate)}"
 		puts "Your Savings Account balance is: #{@savings_balance + (@savings_balance * @interest_rate)}"
-		puts "Total balance is: #{(@checking_balance + @savings_balance) + ((@checking_balance+@savings_balance)) * @interest_rate}"
+		(@checking_balance + @savings_balance) + ((@checking_balance+@savings_balance)) * @interest_rate
 	end
 
 	def account_information
@@ -74,26 +74,25 @@ class BankAccount
 	attr_accessor :interest_rate
 
 	def createAccountNumber
-		@account_number = Integer(rand.to_s[2..9])
+		@account_number = Integer(rand.to_s[2..3])
 	end
 	
 end
 
-user1 = BankAccount.new
-user1.displayAccountNumber
-# user1.checkingAccountBalance
-# user1.savingsAccountBalance
-# user1.deposit(800, "checking")
+# user1 = BankAccount.new
+# user1.displayAccountNumber
 # # user1.checkingAccountBalance
-# user1.deposit(400, "savings")
 # # user1.savingsAccountBalance
-# user1.withdraw(500, "checking")
-# user1.checkingAccountBalance
-# user1.withdraw(100, "savings")
-# user1.savingsAccountBalance
-# user1.displayTotalBalance
-user1.account_information
+# # user1.deposit(800, "checking")
+# # # user1.checkingAccountBalance
+# # user1.deposit(400, "savings")
+# # # user1.savingsAccountBalance
+# # user1.withdraw(500, "checking")
+# # user1.checkingAccountBalance
+# # user1.withdraw(100, "savings")
+# # user1.savingsAccountBalance
+# # user1.displayTotalBalance
+# user1.account_information
 
 user2 = BankAccount.new
-user2.displayAccountNumber
-user2.count_accounts
+user2.withdraw(500, "checking")
